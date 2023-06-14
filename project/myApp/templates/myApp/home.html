@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container mx-auto"></div>
+<h1>Home</h1>
+<ul>
+    <li><a href="{% url 'president' %}">Create a President</a></li>
+    <li><a href="{% url 'country' %}">Create a Country</a></li>
+
+</ul>
+
+#we will create a table to display the data from the database
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>President</th>
+            <th>Age</th>
+            <th>Sexe</th>
+            <th>Picture</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in president %}
+        <tr>
+            <td>{{ e.name }}</td>
+            <td>{{ e.age }}</td>
+            <td>{{ e.sex }}</td>
+            <td><img src="{{ e.img }}" style="max-height: 100px; max-width: 100px;" alt=""></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Population</th>
+            <th>President</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in country %}
+        <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.population }}</td>
+            <td>{{ c.president.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+</div>
+{% endblock %}
