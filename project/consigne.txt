@@ -1,32 +1,23 @@
+```md
+Dans un nouveau projet Django appelé "django_quiz":
 
+Configurez une base de données avec deux tables : "Question" et "Réponse".
 
-```
-Dans un nouveau projet Django appelé "django_three":
+Dans la table "Question", ajoutez trois colonnes : "id", "texte" et "categorie".
+Dans la table "Réponse", ajoutez quatre colonnes : "id", "texte", "est_correcte" et "question_id" (clé étrangère faisant référence à la table "Question").
+Créez une fonctionnalité permettant de créer une nouvelle question avec les actions suivantes :
 
-Configurez une base de données avec trois tables : "Utilisateur", "Projet" et "Tâche".
+- Input text pour le texte de la question.
+- Select pour choisir la catégorie de la question (par exemple : Histoire, Géographie, Sciences, etc.).
 
-Dans la table "Utilisateur", ajoutez trois colonnes : "id", "nom" et "email".
+Créez également une fonctionnalité permettant d'ajouter plusieurs réponses à la question en utilisant des inputs texts pour les textes des réponses et un checkbox pour indiquer si la réponse est correcte ou non.
+Assurez-vous que le select pour les catégories soit généré dynamiquement à partir des entrées existantes dans la table "Question". Cela signifie que si vous ajoutez une nouvelle catégorie, les options correspondantes seront automatiquement mises à jour.
 
-Dans la table "Projet", ajoutez trois colonnes : "id", "nom" et "utilisateur_id" (clé étrangère faisant référence à la table "Utilisateur").
+Implémentez une fonctionnalité pour afficher les questions sous forme de quiz :
 
-Dans la table "Tâche", ajoutez quatre colonnes : "id", "nom", "description" et "projet_id" (clé étrangère faisant référence à la table "Projet").
-
-## Créez une fonctionnalité permettant de créer un nouvel utilisateur avec les actions suivantes :
-
-- Input text pour le nom de l'utilisateur.
-- Input text pour l'adresse e-mail de l'utilisateur.
-
-## Créez une fonctionnalité permettant de créer un nouveau projet avec les actions suivantes :
-
-- Input text pour le nom du projet.
-- Select contenant les utilisateurs existants dans la table "Utilisateur".
-
-## Créez une fonctionnalité permettant de créer une nouvelle tâche avec les actions suivantes :
-
-- Input text pour le nom de la tâche.
-- Input text pour la description de la tâche.
-- Select contenant les projets existants dans la table "Projet".
-Assurez-vous que le select pour les utilisateurs et les projets soient générées dynamiquement à partir des entrées existantes dans les tables respectives. Cela signifie que si vous ajoutez un nouvel utilisateur ou un nouveau projet, les options correspondantes seront automatiquement mises à jour.
-
-Implémentez également des fonctionnalités de read, update et delete (CRUD) pour les utilisateurs, les projets et les tâches, en utilisant des formulaires et des vues appropriés.
+Créez une vue qui sélectionne un nombre spécifié de questions aléatoires d'une catégorie choisie par l'utilisateur.
+Affichez les questions une par une avec les réponses associées.
+Permettez aux utilisateurs de sélectionner une réponse et affichez si la réponse est correcte ou non.
+Calculez et affichez le score final à la fin du quiz.
+Implémentez également des fonctionnalités de lecture, mise à jour et suppression (CRUD) pour les questions et les réponses en utilisant des formulaires et des vues appropriés.
 ```

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>
+    let score = 0;
+    function addClass(element, classe) {
+        element.classList.add(classe);
+        if (classe == 'btn-success') {
+            score += 1;
+            console.log('score: ' + score)
+            document.getElementById('score').innerText = 'Score: ' + score;
+        }
+        console.log('yo')
+    }
+</script>
+{% load static %}
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Quizz</h1>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <a href="{% url 'question' %}" class="btn btn-primary btn-block">Create a new question</a>
+            </div>
+            <div id="score">Score: {{ score }}</div>
+
+            <div class="col-md-6">
+                <a href="{% url 'answer' %}" class="btn btn-secondary btn-block">Create a new answer</a>
+            </div>
+        </div>
+    </div>
+    {% for question, answers in quizz_data %}
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ question.question_text }}</h5>
+            {% for answer in answers %}
+            <button onclick="{% if answer.is_correct == True %} addClass(this, 'btn-success') {% elif  answer.is_correct == False %} addClass(this, 'btn-danger') {% endif %}" class="btn btn-outline-secondary mt-2">{{answer.answer_text}}</button>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

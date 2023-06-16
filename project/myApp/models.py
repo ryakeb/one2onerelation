@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-
+### EXO 1 ### 
 class President(models.Model):
     class Sex(models.TextChoices):
         MALE = 'm'
@@ -18,6 +18,8 @@ class Country(models.Model):
     president = models.OneToOneField(President, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=100)
     population = models.IntegerField()
+
+### EXO 2 ###
 
 class User(models.Model):
     name = models.CharField(max_length=100)
@@ -38,3 +40,24 @@ class Task(models.Model):
     def __str__(self):
         return (self.name)
 
+### EXO 3 ###
+
+class Question(models.Model):
+    class Category(models.TextChoices):
+        SPORT = 'sport'
+        HISTORY = 'history'
+        SCIENCES = 'sciences'
+        GEOGRAPHY = 'geography'
+        MUSIC = 'music'
+        CINEMA = 'cinema'
+        FUNFACTS = 'fun facts'
+    question_text = models.CharField(max_length=300)
+    category = models.CharField(choices=Category.choices, max_length=20)
+    def __str__(self):
+        return (self.question_text)
+
+class Answer(models.Model):
+    answer_text = models.CharField(max_length=300)
+    is_correct = models.BooleanField()
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    
